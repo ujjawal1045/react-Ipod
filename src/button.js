@@ -3,9 +3,25 @@ import react from 'react'
 const Buttons = (props) => {
     return (
         <div className='buttons-container'>
-            <div className='center-circle'>
+            <button className='center-circle'>
                 <h2>select</h2>
-            </div>
+            </button>
+
+            <button className='menu-button'>
+                <i className="fas fa-bars"></i>
+            </button>
+
+            <button className='previous-button'>
+            <i className="fas fa-backward"></i>
+            </button>
+
+            <button className='next-button'>
+            <i className="fas fa-forward"></i>
+            </button>
+
+            <button className='play-pause'>
+            <i className="fas fa-play"></i><i className="fas fa-pause"></i>
+            </button>
         </div>
     );
 }

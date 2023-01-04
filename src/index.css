@@ -26,6 +26,9 @@ code {
   width: 350px;
   height: 350px;
   margin: 0px auto;
+  background-image: url('./background.jpg');
+  background-position: center;
+  background-size: cover;
   
 } 
 
@@ -34,12 +37,13 @@ code {
   width: 260px;
   height: 260px;
    border: 1px solid grey;
-  margin: 0px auto;
+  margin: 10px auto;
   border-radius: 50%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center; 
+  background-color: #ddd;
 }
 
 .center-circle{
@@ -51,4 +55,66 @@ code {
   justify-content: center;
   align-items: center;
   color: white;
+  border: none;
 } 
+
+.menu-button{
+  position: absolute;
+  top: 0px;
+  height: 25%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 37% 37% 0% 0%;
+  font-size: 30px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+}
+
+.previous-button {
+  position: absolute;
+  left: 0px;
+  height: 50%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 37% 0% 0% 37%;
+  font-size: 30px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.next-button {
+  position: absolute;
+  right: 0px;
+  height: 50%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0% 37% 37% 0%;
+  font-size: 30px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.play-pause {
+  position: absolute;
+  bottom: 0px;
+  height: 25%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0% 0% 37% 37%;
+  font-size: 30px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
