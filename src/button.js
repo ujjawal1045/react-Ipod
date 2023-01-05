@@ -1,13 +1,13 @@
-import react from 'react'
+import React from 'react'
 
 const Buttons = (props) => {
     return (
         <div className='buttons-container'>
-            <button className='center-circle'>
+            <button className='center-circle' onClick={props.selectButtonClicked}>
                 <h2>select</h2>
             </button>
 
-            <button className='menu-button'>
+            <button className="menu-button" onClick={props.menuButtonClicked}>
                 <i className="fas fa-bars"></i>
             </button>
 

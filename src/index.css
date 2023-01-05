@@ -29,6 +29,8 @@ code {
   background-image: url('./background.jpg');
   background-position: center;
   background-size: cover;
+  overflow: hidden;
+  position: relative;
   
 } 
 
@@ -123,11 +125,17 @@ code {
 .screen-menu {
 	width: 50%;
 	height: 100%;
-	position: relative;
+	position: absolute;
 	left: 0%;
 	background-color: white;
-	box-shadow: 0px 0px 12px 1px black;
-	transition: width ease-in-out 1s;
+	box-shadow: none;
+  overflow-x: hidden;
+	transition: width ease-in-out 0.2s;
+}
+
+.width-50 {
+  width: 50% !important;
+  box-shadow: 0px 0px 12px 1px rgb(82, 82, 82) !important;
 }
 .screen-menu>div
 {
@@ -138,10 +146,12 @@ code {
     height:20%;
     border:1px solid rgb(190, 190, 190);
     box-sizing: border-box;
+    white-space: nowrap;
 }
 .screen-menu p
 {
     font-size:20px;
+    overflow-wrap: normal;
 }
 
 .screen-menu>.selected
