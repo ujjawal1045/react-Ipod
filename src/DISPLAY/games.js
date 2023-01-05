@@ -6,7 +6,7 @@ class Games extends React.Component
     {
         return (
             <div className="screen-game">
-                <h1>Game</h1>
+                <h1 style={{color: 'blue'}}>Game</h1>
             </div>
         );
     }

@@ -17,10 +17,10 @@ class Screens extends React.Component
         
             <Menu
             selectedOption = {this.props.selectedOption}  />
-            {this.props.showPage === 0 ? <Games /> : ''}
-            {this.props.showPage === 1 ? <Music /> : ''}
-            {this.props.showPage === 2 ? <Setting /> : ''}
-            {this.props.showPage === 3 ? <Coverflow /> : ''}
+            {this.props.displaypage === 0 ? <Games /> : ''}
+            {this.props.displaypage === 1 ? <Music /> : ''}
+            {this.props.displaypage=== 2 ? <Setting /> : ''}
+            {this.props.displaypage === 3 ? <Coverflow /> : ''}
         </div>
     );
   }

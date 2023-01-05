@@ -6,7 +6,7 @@ class Music extends React.Component
     {
         return (
             <div>
-                <h1>music</h1>
+                <h1 style={{color: 'pink'}}>music</h1>
             </div>
         );
     }

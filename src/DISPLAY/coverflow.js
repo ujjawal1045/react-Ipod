@@ -6,7 +6,7 @@ class Coverflow extends React.Component
     {
         return (
             <div>
-                <h1>coverflow</h1>
+                <h1 style={{color: 'pink'}}>coverflow</h1>
             </div>
         );
     }

@@ -76,7 +76,7 @@ class App extends React.Component {
   }
 
   handleSelectButtonClicked = () => {
-    this.menuButtonClicked();
+    this.handleMenuButtonClicked();
     this.setState({
       displaypage:this.state.selected
     });
@@ -88,7 +88,7 @@ class App extends React.Component {
       <div className='App'>
         <Screens
         selectedOption = {this.state.selected} 
-        showPage = {this.state.showPage}
+        displaypage = {this.state.displaypage}
         />
         <Buttons 
         check={this.checker}

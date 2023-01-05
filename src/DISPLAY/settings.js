@@ -6,7 +6,7 @@ class Setting extends React.Component
     {
         return (
             <div>
-                <h1>setting</h1>
+                <h1 style={{color: 'pink'}}>setting</h1>
             </div>
         );
     }
