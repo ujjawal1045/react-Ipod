@@ -31,6 +31,9 @@ class App extends React.Component {
                 this.state.selected++;
                 this.state.change_in_angle = 0;
                 this.state.selected = this.state.selected % 4
+                this.setState({
+                  selected: this.state.selected
+                });
       }
       else if(this.state.change_in_angle<-60) {
         console.log(this.state.options[this.state.selected]);
@@ -39,6 +42,9 @@ class App extends React.Component {
                 if (this.state.selected === -1)
                     this.state.selected = 3;
                 this.state.selected = this.state.selected % 4;
+                this.setState({
+                  selected: this.state.selected
+                });
       }
     });
 
@@ -49,7 +55,9 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <Screens />
+        <Screens
+        selectedOption = {this.state.selected} 
+        />
         <Buttons 
         check={this.checker}
         centerButton={this.centerButton}

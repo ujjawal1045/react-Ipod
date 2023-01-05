@@ -7,9 +7,12 @@ import Setting from './DISPLAY/settings';
 
 
 const Screens = (props) => {
+    const {options} = props;
     return (
         <div className='screen-container'>
-            <Menu />
+        
+            <Menu
+            selectedOption = {props.selectedOption}  />
         </div>
     );
 }
