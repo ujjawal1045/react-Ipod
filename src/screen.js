@@ -16,7 +16,10 @@ class Screens extends React.Component
         <div className='screen-container'>
         
             <Menu
-            selectedOption = {this.props.selectedOption}  />
+            selectedOption = {this.props.selectedOption}
+            optionsInMenu = {this.props.selectedMusicMenu}
+            />
+
             {this.props.displaypage === 0 ? <Games /> : ''}
             {this.props.displaypage === 1 ? <Music /> : ''}
             {this.props.displaypage=== 2 ? <Setting /> : ''}

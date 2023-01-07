@@ -46,20 +46,3 @@ class Music extends React.Component
 };
 
  export default Music;
-// import React from ' react';
-// import firebase from 'firebase/compat/app';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
-
-// class Music extends React.Component {
-    
-//     render() {
-//         return (
-//             <div className='display-music'>
-//                 <h1 style={{color: 'pink'}}>music</h1>
-//             </div>
-//         );
-//     }
-// };
-
-// export default Music;

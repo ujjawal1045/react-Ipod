@@ -18,6 +18,17 @@ class App extends React.Component {
                 'Settings',
                 'Cover Flow'
     ],
+    music_sub_options: [
+      'Songs',
+      'Albums',
+      'Artists',
+      'Playlists'
+    ],
+    general_menu :  ['Games',
+    'Music',
+    'Settings',
+    'Cover Flow'
+],
     change_in_angle : 0,
     selected: 0,
     displaypage:-1
@@ -60,6 +71,13 @@ class App extends React.Component {
   }
 
   handleMenuButtonClicked = () => {
+
+    if(this.state.options === this.state.music_sub_options) {
+      this.setState({
+        options:this.state.general_menu
+      });
+      return;
+    }
     let menuList = document.getElementsByClassName('screen-menu')[0].classList;
     
     console.log($('.screen-menu'));
@@ -76,6 +94,12 @@ class App extends React.Component {
   }
 
   handleSelectButtonClicked = () => {
+    if(this.state.selected===1) {
+      this.setState({
+        options: this.state.music_sub_options
+      });
+      return;
+    }
     this.handleMenuButtonClicked();
     this.setState({
       displaypage:this.state.selected
@@ -89,6 +113,8 @@ class App extends React.Component {
         <Screens
         selectedOption = {this.state.selected} 
         displaypage = {this.state.displaypage}
+        selectedMusicMenu = {this.state.options}
+
         />
         <Buttons 
         check={this.checker}

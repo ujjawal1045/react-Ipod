@@ -1,5 +1,5 @@
 import React from 'react';
-import react from 'react';
+import MusicMenu from './musicMenu';
 
 // const Menu = (props) => {
     // const {options} = props;
@@ -14,7 +14,7 @@ import react from 'react';
             </div>
            
            
-            <div className={selectedOption===0? 'selected' : ''}>
+            {/* <div className={selectedOption===0? 'selected' : ''}>
                 <p>Games</p>
             </div>
             <div className={selectedOption===1? 'selected' : ''}>
@@ -25,7 +25,11 @@ import react from 'react';
             </div>
             <div className={selectedOption===3? 'selected' : ''}> 
                 <p>Coverflow</p>
-            </div>
+            </div> */}
+            <MusicMenu
+           selectedMusicMenu ={this.props.optionsInMenu}
+            selectedOption={selectedOption}
+            />
         </div>
     )
   }
