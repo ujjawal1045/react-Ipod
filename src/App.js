@@ -32,7 +32,8 @@ class App extends React.Component {
     change_in_angle : 0,
     selected: 0,
     displaypage:-1,
-    music_selected: 0
+    music_selected: 0,
+    songIndex: -1
     }
   }
   componentDidMount () {
@@ -48,7 +49,8 @@ class App extends React.Component {
                 
                 this.temp_selected = this.temp_selected % 4;
                 this.setState({
-                  selected: this.temp_selected
+                  selected: this.temp_selected,
+                  songIndex:-1
                 });
                 this.temp_change_in_angle = 0;
       }
@@ -60,7 +62,8 @@ class App extends React.Component {
                     this.temp_selected = 3;
                 this.temp_selected = this.temp_selected %4;
                 this.setState({
-                  selected: this.temp_selected
+                  selected: this.temp_selected,
+                  songIndex:-1
                 });
                 this.temp_change_in_angle = 0;
       }
@@ -98,13 +101,34 @@ class App extends React.Component {
     if(this.state.selected===1 && this.state.options[0]==='Games' && this.state.options.length === 4 ) {
       this.setState({
         options: this.state.music_sub_options,
+        songIndex:-1
         // selected:0,
          //displaypage:0
       });
       return;
     }
+
+    if (!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))//side menu is not visible
+        {
+            //if (this.state.options[3] === 'Playlists')
+            //{
+              console.log("checkinmg",this.state.displaypage);
+                if (this.state.displaypage === 0)
+                {
+              console.log("checkinmg index",this.state.songIndex);
+
+                    if (this.state.songIndex === -1)
+                    console.log("checkinmg music selected",this.state.music_selected);
+                        this.setState({
+                         songIndex:this.state.music_selected
+                        });
+                   return;
+                }
+           // }
+        }
     this.setState({
-      displaypage:this.state.selected
+      displaypage:this.state.selected,
+      songIndex:-1
     });
     this.handleMenuButtonClicked();
     
@@ -116,10 +140,30 @@ class App extends React.Component {
         if (this.state.options[0] ==='Songs' )
             this.setState(
                 {
-                    options: this.state.general_menu
+                    options: this.state.general_menu,
+                    songIndex:-1
                 }
             );
-        return;
+            if (!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))//side menu is not visible
+            {
+                if (this.state.options[3] === 'Playlists')
+                {
+                    if (this.state.displaypage === 0)
+                    {
+                      
+                        if (this.state.current_music_selection === 0)//If I am playing the music at 5th index then I will need to reduce the index to 0 on next right button click.
+                            this.setState({
+                              music_selected: 5,
+                              songIndex:-1
+                            });
+                        else
+                            this.setState({
+                              music_selected: this.state.music_selected - 1,
+                              songIndex:-1
+                            });
+                    }
+                }
+            }
     }
 
 
@@ -144,6 +188,10 @@ class App extends React.Component {
         }
     }
 
+    handlePlayPAuseButtonClicked = () => {
+      $('#audio')[0].play();
+    }
+
 
   render() {
     return (
@@ -153,6 +201,7 @@ class App extends React.Component {
         displaypage = {this.state.displaypage}
         selectedMusicMenu = {this.state.options}
         musicSelected = {this.state.music_selected}
+        songIndex={this.state.songIndex}
 
         />
         <Buttons 
@@ -162,6 +211,7 @@ class App extends React.Component {
         selectButtonClicked={this.handleSelectButtonClicked}
         leftButtonClicked={this.handleLeftButtonClicked}
         rightButtonClicked={this.handleRightButtonClicked}
+        playPauseButtonClicked={this.handlePlayPAuseButtonClicked}
          />
       </div>
     );

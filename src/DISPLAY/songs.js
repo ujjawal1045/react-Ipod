@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import PlaySong from './playSong';
 // class Songs extends React.Component
 // {
 //     render()
@@ -36,11 +37,14 @@ class Songs extends React.Component
            list.items.forEach(async (ref) => {
             await ref.getDownloadURL()
             .then((link) => {
-                this.temp_song_array.push({name:ref.name,url:link})
-                this.setState({
-                    songs_list: this.temp_song_array,
-                   
-                });
+                this.temp_song_array.push({name:ref.name,url:link});
+                if(this.temp_song_array.length === 6) {
+                    this.setState({
+                        songs_list: this.temp_song_array,
+                       
+                    });
+                }
+                
             })
             .catch((error) => {
                 console.log('error in fetching all song list from db', error);
@@ -58,6 +62,13 @@ class Songs extends React.Component
     
     render()
     {
+        console.log('checking song index in song fle',this.props.songIndex)
+        
+        if(this.props.songIndex !== -1) {
+            return <PlaySong
+            songIndex={this.props.songIndex}
+            songs={this.state.songs_list} />;
+        }
         return (
             
             <div className='song-list'>
@@ -67,9 +78,10 @@ class Songs extends React.Component
                 <audio controls src={this.state.audioLink}></audio> */}
                 {this.state.songs_list.map((item,index) => {
                     console.log(item);
-                    
+                    console.log(item.name);
                     return (
                         <div className={this.props.currentMusicSelected==index ? 'selected-song' : ''} key={index}> {item.name} </div>
+                        
                     )
                 })}
 

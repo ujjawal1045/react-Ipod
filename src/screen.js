@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from './DISPLAY/menu'
 import Games from './DISPLAY/games';
-import Music from './DISPLAY/music';
+import PlaySong from './DISPLAY/playSong';
 import Setting from './DISPLAY/settings';
 import Coverflow from './DISPLAY/coverflow';
 import Albums from './DISPLAY/album';
@@ -35,7 +35,8 @@ class Screens extends React.Component
              {this.props.displaypage === 2&&this.props.selectedMusicMenu[2]==='Settings' ? <Setting /> : ''}
              {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Cover Flow' ? <Coverflow /> : ''}
              {this.props.displaypage === 0&&this.props.selectedMusicMenu[0]==='Songs' ? <Songs
-              currentMusicSelected={this.musicSelected} /> : ''}
+              currentMusicSelected={this.props.musicSelected}
+              songIndex={this.props.songIndex} /> : ''}
              {this.props.displaypage === 1&&this.props.selectedMusicMenu[1]==='Albums' ? <Albums /> : ''} 
              {this.props.displaypage === 2&&this.props.selectedMusicMenu[2]==='Artists' ? <Artists /> : ''}
              {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Playlists'? <PlayList /> : ''} 
