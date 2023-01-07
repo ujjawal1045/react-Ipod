@@ -21,8 +21,8 @@ class App extends React.Component {
     music_sub_options: [
       'Songs',
       'Albums',
-      'Artists'
-      // 'Playlists'
+      'Artists',
+       'Playlists'
     ],
     general_menu :  ['Games',
     'Music',
@@ -45,7 +45,7 @@ class App extends React.Component {
         console.log(this.state.options[this.state.selected]);
                 this.temp_selected++;
                 
-                this.temp_selected = this.temp_selected % this.state.options.length;
+                this.temp_selected = this.temp_selected % 4;
                 this.setState({
                   selected: this.temp_selected
                 });
@@ -56,8 +56,8 @@ class App extends React.Component {
                 this.temp_selected--;
                 
                 if (this.temp_selected === -1)
-                    this.temp_selected = this.state.options.length-1;
-                this.temp_selected = this.temp_selected %this.state.options.length;
+                    this.temp_selected = 3;
+                this.temp_selected = this.temp_selected %4;
                 this.setState({
                   selected: this.temp_selected
                 });
@@ -94,7 +94,7 @@ class App extends React.Component {
   }
 
   handleSelectButtonClicked = () => {
-    if(this.state.selected===1 && this.state.options.length === 4) {
+    if(this.state.selected===1 && this.state.options[0]==='Games' && this.state.options.length === 4 ) {
       this.setState({
         options: this.state.music_sub_options
       });

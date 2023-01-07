@@ -29,14 +29,15 @@ class Screens extends React.Component
             {this.props.displaypage=== 2 ? <Setting /> : ''}
             {this.props.displaypage === 3 ? <Coverflow /> : ''}  */}
 
-             {this.props.displaypage === 0&&this.props.selectedMusicMenu.length===4 ? <Games /> : ''}
              
-            {this.props.displaypage === 2&&this.props.selectedMusicMenu.length===4 ? <Setting /> : ''}
-            {this.props.displaypage === 3&&this.props.selectedMusicMenu.length===4 ? <Coverflow /> : ''}
-            {/* {this.props.displaypage === 3&&this.props.selectedMusicMenu.length===3? <PlayList /> : ''} */}
-            {this.props.displaypage === 0&&this.props.selectedMusicMenu.length===3 ? <Songs /> : ''}
-            {this.props.displaypage === 1&&this.props.selectedMusicMenu.length===3 ? <Albums /> : ''} 
-            {this.props.displaypage === 2&&this.props.selectedMusicMenu.length===3 ? <Artists /> : ''}
+
+             {this.props.displaypage === 0&&this.props.selectedMusicMenu[0]==='Games' ? <Games /> : ''}
+             {this.props.displaypage === 2&&this.props.selectedMusicMenu[2]==='Settings' ? <Setting /> : ''}
+             {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Cover Flow' ? <Coverflow /> : ''}
+              {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Playlists'? <PlayList /> : ''} 
+             {this.props.displaypage === 0&&this.props.selectedMusicMenu[0]==='Songs' ? <Songs /> : ''}
+             {this.props.displaypage === 1&&this.props.selectedMusicMenu[1]==='Albums' ? <Albums /> : ''} 
+             {this.props.displaypage === 2&&this.props.selectedMusicMenu[2]==='Artists' ? <Artists /> : ''}
            
     </div>
     );
