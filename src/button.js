@@ -11,7 +11,7 @@ const Buttons = (props) => {
                 <i className="fas fa-bars"></i>
             </button>
 
-            <button className='previous-button'>
+            <button className='previous-button' onClick={props.leftButtonClicked}>
             <i className="fas fa-backward"></i>
             </button>
 

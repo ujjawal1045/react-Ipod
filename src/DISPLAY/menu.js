@@ -27,7 +27,7 @@ import MusicMenu from './musicMenu';
                 <p>Coverflow</p>
             </div> */}
             <MusicMenu
-           selectedMusicMenu ={this.props.optionsInMenu}
+            selectedMusicMenu ={this.props.optionsInMenu}
             selectedOption={selectedOption}
             />
         </div>
