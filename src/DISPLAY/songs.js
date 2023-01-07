@@ -19,36 +19,60 @@ class Songs extends React.Component
 {
     constructor() {
         super();
+        this.temp_song_array=[]
         this.state = {
-            audioLink: ''
+            songs_list:[],
+            
         }
     }
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         firebase
         .storage()
         .ref()
         // .child('songs/Maan Meri Jaan(PagalWorld.com.se).mp3').getDownloadURL()
-        .child('Maan Meri Jaan(PagalWorld.com.se).mp3').getDownloadURL()
+        .child('songs').listAll()
 
-        .then((link) => {
-            console.log('')
-            this.setState({
-                audioLink: link
+        .then((list) => {
+           list.items.forEach(async (ref) => {
+            await ref.getDownloadURL()
+            .then((link) => {
+                this.temp_song_array.push({name:ref.name,url:link})
+                this.setState({
+                    songs_list: this.temp_song_array,
+                   
+                });
             })
-        }) 
+            .catch((error) => {
+                console.log('error in fetching all song list from db', error);
+               })
 
-        .catch ((error) => {
-            console.log('error in getting music froms torage', error);
+           })
+           
+        }) 
+        .catch((error) => {
+            if(error)
+            console.log('error in fetching list',error)
         })
+
     }
     
     render()
     {
         return (
-            <div className='display-music'>
-                <div>
-                <h1 style={{color: 'pink'}}> react music</h1>   
-                <audio controls src={this.state.audioLink}></audio>
+            
+            <div className='song-list'>
+                <h1 className='song-heading'>All Songs</h1>
+                <div className='all-songs-list'>
+                {/* <h1 style={{color: 'pink'}}> react music</h1>   
+                <audio controls src={this.state.audioLink}></audio> */}
+                {this.state.songs_list.map((item,index) => {
+                    console.log(item);
+                    
+                    return (
+                        <div className={this.props.currentMusicSelected==index ? 'selected-song' : ''} key={index}> {item.name} </div>
+                    )
+                })}
+
                 </div>               
             </div>
         );

@@ -31,7 +31,8 @@ class App extends React.Component {
 ],
     change_in_angle : 0,
     selected: 0,
-    displaypage:-1
+    displaypage:-1,
+    music_selected: 0
     }
   }
   componentDidMount () {
@@ -96,7 +97,9 @@ class App extends React.Component {
   handleSelectButtonClicked = () => {
     if(this.state.selected===1 && this.state.options[0]==='Games' && this.state.options.length === 4 ) {
       this.setState({
-        options: this.state.music_sub_options
+        options: this.state.music_sub_options,
+        // selected:0,
+         //displaypage:0
       });
       return;
     }
@@ -120,6 +123,28 @@ class App extends React.Component {
     }
 
 
+    handleRightButtonClicked = () =>
+    {
+        if (!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))//side menu is not visible
+        {
+            if (this.state.options[3] === 'Playlists')
+            {
+                if (this.state.displaypage === 0)
+                {
+                    if (this.state.current_music_selection === 5)//If I am playing the music at 5th index then I will need to reduce the index to 0 on next right button click.
+                        this.setState({
+                          music_selected: 0
+                        });
+                    else
+                        this.setState({
+                          music_selected: this.state.music_selected + 1
+                        });
+                }
+            }
+        }
+    }
+
+
   render() {
     return (
       <div className='App'>
@@ -127,6 +152,7 @@ class App extends React.Component {
         selectedOption = {this.state.selected} 
         displaypage = {this.state.displaypage}
         selectedMusicMenu = {this.state.options}
+        musicSelected = {this.state.music_selected}
 
         />
         <Buttons 
@@ -135,6 +161,7 @@ class App extends React.Component {
         menuButtonClicked={this.handleMenuButtonClicked}
         selectButtonClicked={this.handleSelectButtonClicked}
         leftButtonClicked={this.handleLeftButtonClicked}
+        rightButtonClicked={this.handleRightButtonClicked}
          />
       </div>
     );
