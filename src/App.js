@@ -243,13 +243,16 @@ class App extends React.Component {
     }
 
     handlePlayPAuseButtonClicked = () => {
-       if($('#audio')[0].pause) {
-        $('#audio')[0].play();
-        $('.buttons-container').addClass('colored');
-        return;
+      if ($('#audio')[0]!==undefined)
+        {
+        if($('#audio')[0].paused) {
+          $('#audio')[0].play();
+          $('.buttons-container').addClass('colored');
+          return;
+        }
+        $('#audio')[0].pause();
+        $('.buttons-container').removeClass('colored');
       }
-      $('#audio')[0].pause();
-      $('.buttons-container').removeClass('colored');
     }
 
     handlePlayMusicScreen = () => {
