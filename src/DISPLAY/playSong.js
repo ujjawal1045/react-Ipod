@@ -9,6 +9,7 @@ import 'firebase/compat/storage';
  {
     componentDidMount (){
         this.props.playMusicScreen()
+       
     }
 
     componentWillUnmount() {

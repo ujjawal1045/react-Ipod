@@ -217,3 +217,43 @@ code {
 {
     background-color:rgb(255, 166, 0);
 }
+
+/* for round color */
+@keyframes background-gradient-animation
+{
+    0%
+    {
+        background-color:red;
+    }
+    25%
+    {
+        background-color:green;
+    }
+    70%
+    {
+        background-color:blue;
+    }
+    100%
+    {
+        background-color: red;
+    }
+}
+
+
+.colored
+{
+    animation-name: background-gradient-animation;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    color:white;
+    opacity:0.8;
+}
+.colored svg
+{
+    color:white;
+}
+.colored .center-circle
+{
+    background-color:black;
+}

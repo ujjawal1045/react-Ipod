@@ -68,7 +68,8 @@ class Songs extends React.Component
             return <PlaySong
             songIndex={this.props.songIndex}
             songs={this.state.songs_list}
-            playMusicScreen={this.props.playMusicScreen} />;
+            playMusicScreen={this.props.playMusicScreen}
+             />;
         }
         return (
             

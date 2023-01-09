@@ -192,6 +192,7 @@ class App extends React.Component {
                               music_selected: this.state.music_selected - 1,
                               songIndex:-1
                             });
+                            return;
                     }
                 }
             }
@@ -242,13 +243,13 @@ class App extends React.Component {
     }
 
     handlePlayPAuseButtonClicked = () => {
-      if($('#audio')[0].play) {
-        $('#audio')[0].pause();
-        return;
-      } else if($('#audio')[0].pause) {
+       if($('#audio')[0].pause) {
         $('#audio')[0].play();
+        $('.buttons-container').addClass('colored');
         return;
       }
+      $('#audio')[0].pause();
+      $('.buttons-container').removeClass('colored');
     }
 
     handlePlayMusicScreen = () => {
@@ -274,7 +275,7 @@ class App extends React.Component {
         musicSelected = {this.state.music_selected}
         songIndex={this.state.songIndex}
         playMusicScreen = {this.handlePlayMusicScreen}
-
+        
         />
         <Buttons 
         check={this.checker}
