@@ -254,6 +254,7 @@ class App extends React.Component {
 
     handlePlayMusicScreen = () => {
       if(this.state.on_play_music_screen) {
+        $('.buttons-container').removeClass('colored');
         this.setState({
           on_play_music_screen:false
         });

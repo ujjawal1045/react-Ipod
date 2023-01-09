@@ -21,7 +21,7 @@ import 'firebase/compat/storage';
         const {songIndex, songs}= this.props;
          return (
             <div className='display-music'>
-                <h2>{songs[songIndex].name}</h2>
+                <h2 style={{color:'white'}}>{songs[songIndex].name}</h2>
                  <div className='song-image'>
                     <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Iik_noADWIOelaB5qJ7dzQfv2yeZ907q_Q&usqp=CAU'}></img>
                 {/* <h1 style={{color: 'pink'}}> react music</h1>    */}

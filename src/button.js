@@ -8,7 +8,7 @@ const Buttons = (props) => {
             </button>
 
             <button className="menu-button" onClick={props.menuButtonClicked}>
-                <i className="fas fa-bars"></i>
+                <h5>menu</h5>
             </button>
 
             <button className='previous-button' onClick={props.leftButtonClicked}>
