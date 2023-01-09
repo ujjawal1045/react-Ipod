@@ -36,7 +36,8 @@ class Screens extends React.Component
              {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Cover Flow' ? <Coverflow /> : ''}
              {this.props.displaypage === 0&&this.props.selectedMusicMenu[0]==='Songs' ? <Songs
               currentMusicSelected={this.props.musicSelected}
-              songIndex={this.props.songIndex} /> : ''}
+              songIndex={this.props.songIndex}
+              playMusicScreen={this.props.playMusicScreen} /> : ''}
              {this.props.displaypage === 1&&this.props.selectedMusicMenu[1]==='Albums' ? <Albums /> : ''} 
              {this.props.displaypage === 2&&this.props.selectedMusicMenu[2]==='Artists' ? <Artists /> : ''}
              {this.props.displaypage === 3&&this.props.selectedMusicMenu[3]==='Playlists'? <PlayList /> : ''} 

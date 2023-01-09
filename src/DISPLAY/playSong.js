@@ -7,7 +7,13 @@ import 'firebase/compat/storage';
 
  class PlaySong extends React.Component
  {
-    
+    componentDidMount (){
+        this.props.playMusicScreen()
+    }
+
+    componentWillUnmount() {
+        this.props.playMusicScreen()
+    }
     
      render()
      {

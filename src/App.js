@@ -33,7 +33,8 @@ class App extends React.Component {
     selected: 0,
     displaypage:-1,
     music_selected: 0,
-    songIndex: -1
+    songIndex: -1,
+    on_play_music_screen : false
     }
   }
   componentDidMount () {
@@ -101,10 +102,13 @@ class App extends React.Component {
     if(this.state.selected===1 && this.state.options[0]==='Games' && this.state.options.length === 4 ) {
       this.setState({
         options: this.state.music_sub_options,
-        songIndex:-1
+        songIndex:-1,
+        songNavigate :0
+       
         // selected:0,
          //displaypage:0
       });
+      this.temp_selected =0;
       return;
     }
 
@@ -120,16 +124,20 @@ class App extends React.Component {
                     if (this.state.songIndex === -1)
                     console.log("checkinmg music selected",this.state.music_selected);
                         this.setState({
-                         songIndex:this.state.music_selected
+                         songIndex:this.state.music_selected,
+                         songNavigate:0
                         });
+                        this.temp_selected=0;
                    return;
                 }
            // }
         }
     this.setState({
       displaypage:this.state.selected,
-      songIndex:-1
+      songIndex:-1,
+      selected:0,
     });
+    this.temp_selected=0;
     this.handleMenuButtonClicked();
     
 
@@ -137,11 +145,34 @@ class App extends React.Component {
 
   handleLeftButtonClicked = () =>
     {
+
+      if(this.state.on_play_music_screen)
+        {
+            if(!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))
+            {
+                
+                if(this.state.songIndex===0)
+                {
+                    this.setState({
+                      songIndex:5
+                    });
+                    return;
+                }
+                if(this.state.songIndex!==-1)
+                {
+                    this.setState({
+                      songIndex:this.state.songIndex-1
+                    });
+                }
+            }
+        }
+
         if (this.state.options[0] ==='Songs' )
             this.setState(
                 {
                     options: this.state.general_menu,
-                    songIndex:-1
+                    songIndex:-1,
+                    selected:0
                 }
             );
             if (!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))//side menu is not visible
@@ -169,6 +200,28 @@ class App extends React.Component {
 
     handleRightButtonClicked = () =>
     {
+
+      if(this.state.on_play_music_screen)
+        {
+            if(!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))
+            {
+                
+                if(this.state.songIndex===5)
+                {
+                    this.setState({
+                      songIndex:0
+                    });
+                    return;
+                }
+                if(this.state.songIndex!==-1)
+                {
+                    this.setState({
+                      songIndex:this.state.songIndex+1
+                    });
+                    return;
+                }
+            }
+        }
         if (!document.getElementsByClassName('screen-menu')[0].classList.contains('width-50'))//side menu is not visible
         {
             if (this.state.options[3] === 'Playlists')
@@ -189,7 +242,25 @@ class App extends React.Component {
     }
 
     handlePlayPAuseButtonClicked = () => {
-      $('#audio')[0].play();
+      if($('#audio')[0].play) {
+        $('#audio')[0].pause();
+        return;
+      } else if($('#audio')[0].pause) {
+        $('#audio')[0].play();
+        return;
+      }
+    }
+
+    handlePlayMusicScreen = () => {
+      if(this.state.on_play_music_screen) {
+        this.setState({
+          on_play_music_screen:false
+        });
+      } else {
+        this.setState({
+          on_play_music_screen: true
+        });
+      }
     }
 
 
@@ -202,6 +273,7 @@ class App extends React.Component {
         selectedMusicMenu = {this.state.options}
         musicSelected = {this.state.music_selected}
         songIndex={this.state.songIndex}
+        playMusicScreen = {this.handlePlayMusicScreen}
 
         />
         <Buttons 
